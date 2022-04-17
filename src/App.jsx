@@ -1,35 +1,45 @@
 import './App.css';
 import Stopwatch from './Components/Stopwatch';
 import Timer from './Components/Timer';
-import {useState,useEffect} from 'react';
+import {useState,useRef, useEffect} from 'react';
 
 function App() {
   const [showTimer,setShowTimer] = useState(true);
 
+  const timerTab = useRef(null);
+  const stopwatchTab = useRef(null);
   
- 
+  useEffect(() => {
+      document.querySelector("#timer").classList.toggle("selected");
+      document.querySelector("#stopwatch").classList.toggle("selected");
+  },[showTimer]);
   return (
     <div className="App">
       <div id="tabs">
         <div
           id="timer"
+          ref={timerTab}
+          className="selected"
           onClick={() => {
             if (!showTimer) {
               setShowTimer(true);
+            
             }
           }}
         >
-          Timer
+          TIMER
         </div>
         <div
           id="stopwatch"
+          ref={stopwatchTab}
           onClick={() => {
             if (showTimer) {
               setShowTimer(false);
+
             }
           }}
         >
-          Stop Watch
+          STOPWATCH
         </div>
       </div>
       <div id="content">{showTimer ? <Timer /> : <Stopwatch />}</div>

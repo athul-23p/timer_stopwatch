@@ -52,7 +52,6 @@ function Timer() {
     <div>
       <h2>Timer</h2>
       <h3>{timeString}</h3>
-      <TimerInput handleSubmit={handleSetTime} />
       <div className="timer-controls">
         <button className="start-btn" onClick={start}>
           Start
@@ -63,6 +62,7 @@ function Timer() {
         <button className="reset-btn" onClick={reset}>
           Reset
         </button>
+      <TimerInput handleSubmit={handleSetTime} />
       </div>
     </div>
   );
