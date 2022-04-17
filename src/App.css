@@ -1,3 +1,45 @@
 .App {
+  width: 80vw;
+  margin: auto;
+  height: fit-content;
+  border: 3px solid red;
+  border-radius: 9px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
 
+.App > div {
+  width: 100%;
+}
+
+#tabs {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+#tabs > div {
+  flex-grow: 1;
+  padding: 10px;
+}
+
+.selected-tab{
+    color: white;
+    background-color: teal;
+    font-size: 1.2rem;
+}
+
+button{
+    padding: 5px;
+    width: 70px;
+    margin: 5px;
+}
+[type='number']{
+    padding: 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }

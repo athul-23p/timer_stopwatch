@@ -8,7 +8,7 @@ function TimerInput({ handleSubmit }) {
   }
   return (
     <div id="timer-input-container">
-      <input type="text" name="time-input" id="" value={input} onChange={(e) =>handleInput(e)}/>
+      <input type="number" name="time-input" id="" value={input} onChange={(e) =>handleInput(e)} placeholder="Enter time in seconds"/>
       <button id="submit-btn" onClick={() => handleSubmit(input)}>
         Submit
       </button>

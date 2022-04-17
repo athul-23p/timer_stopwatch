@@ -1,8 +1,8 @@
 import TimerInput from "./TimerInput";
-import { useState, useRef } from "react";
+import { useState,useEffect, useRef } from "react";
 
 function Timer() {
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(0);
   const handleSetTime = (time_in_seconds) => {
     setTime(time_in_seconds);
   };
@@ -10,7 +10,7 @@ function Timer() {
   const timerIntervalID = useRef(null);
   const start = () => {
       // if there is no timer running start a new timer
-    if (timerIntervalID.current === null) {
+    if (timerIntervalID.current === null && time !== 0) {
       timerIntervalID.current = setInterval(() => {
         setTime((prev) => {
          // when the time reaches 0 clear interval
@@ -32,6 +32,11 @@ function Timer() {
     setTime(0);
   };
 
+  useEffect(() => {
+    return () => {
+      clearTimeInterval();
+    };
+  }, []);
   const clearTimeInterval = () => {
     clearInterval(timerIntervalID.current);
     timerIntervalID.current = null;
