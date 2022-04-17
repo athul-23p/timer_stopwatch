@@ -1,32 +1,34 @@
-import { useState, useEffect,useRef } from "react";
+import { useState,useRef } from "react";
 
 function Stopwatch() {
-  const [time, setTime] = useState(0);
-  const timerId = useRef(null);
+  const [time, setTime] = useState(600000);
+  const stopwatchIntervalID = useRef(null);
+  
   const start = () => {
-      if(timerId?.current === null){
-          timerId.current = setInterval(() => {
+      if(stopwatchIntervalID.current === null){
+          stopwatchIntervalID.current = setInterval(() => {
             setTime(prev => prev + 1);
-          }, 10);
+          }, 10); // runs every 10 millisecond
 
       }
   }
 
   const stop = () => {
-      clearInterval(timerId.current);
-      timerId.current = null;
+      clearInterval(stopwatchIntervalID.current);
+      stopwatchIntervalID.current = null;
   }
 
   const reset = () => {
-      clearInterval(timerId.current);
-      timerId.current = null;
+      clearInterval(stopwatchIntervalID.current);
+      stopwatchIntervalID.current = null;
       setTime(0);
   }
+  
   const seconds = Math.floor(time/100)%60;
   const minutes = Math.floor((time/6000))%60;
-//   const hours = 0;
-  const hours = Math.floor(time/360000)%60;
+  const hours = Math.floor(time/360000)%24;
   const milliSeconds = time%100;
+
   const timeString = `${hours}h ${minutes}m ${seconds}s ${milliSeconds}`;
   return (
     <div>
